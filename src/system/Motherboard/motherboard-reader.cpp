@@ -31,8 +31,8 @@ void MotherboardReader::readModel() {
 }
 
 void MotherboardReader::printModel() const {
-    std::cout << "Vendor: " << vendor_ << std::endl;
-    std::cout << "Model: " << modelName_ << std::endl;
-    std::cout << "RAM type: " << ramType_ << std::endl;
+    std::cout << "\tVendor: " << vendor_ << std::endl;
+    std::cout << "\tModel: " << modelName_ << std::endl;
+    std::cout << "\tRAM type: " << ramType_ << std::endl;
 
 }

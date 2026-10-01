@@ -8,25 +8,25 @@
 
 
 void GpuReader::printModel() const{
-    std::cout<<"GPU: "<<modelName_<<std::endl;
+    std::cout<<"\t"<<modelName_<<std::endl;
 }
 
 
 //Print maximum permissive temperature (in Celsius) before the system shuts it down or starts enhanced cooling
 void GpuReader::printMaxTemp() const {
-    std::cout<<"Max GPU temperature: "<<maxTemp_<<"°C"<<std::endl;
+    std::cout<<"\tMax GPU temperature: "<<maxTemp_<<"°C"<<std::endl;
 }
 
 
 void GpuReader::printCurrTemp() const {
-    std::cout<<"Current GPU temperature: "<<currTemp_<<"°C"<<std::endl;
+    std::cout<<"\tCurrent GPU temperature: "<<currTemp_<<"°C"<<std::endl;
 }
 
 
 void GpuReader::printVRAM() const {
-    std::cout<<"Total VRAM: "<<vram_.total<<std::endl;
-    std::cout<<"Free VRAM: "<<vram_.free<<std::endl;
-    std::cout<<"Used VRAM: "<<vram_.used<<std::endl;
+    std::cout<<"\tTotal VRAM: "<<vram_.total<<std::endl;
+    std::cout<<"\tFree VRAM: "<<vram_.free<<std::endl;
+    std::cout<<"\tUsed VRAM: "<<vram_.used<<std::endl;
 }
 
 

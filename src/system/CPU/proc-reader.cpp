@@ -34,6 +34,6 @@ void ProcReader::readModel()
 
 void ProcReader::printModel() const
 {
-    std::cout<<"CPU: "<<modelName_<<std::endl;
+    std::cout<<"\t"<<modelName_<<std::endl;
 }
 

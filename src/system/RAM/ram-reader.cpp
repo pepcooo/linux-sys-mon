@@ -54,22 +54,22 @@ void RamReader::readModel() {
 }
 
 void RamReader::printModel() const {
-    std::cout << "Total Memory: " << ramTotal_ << std::endl;
-    std::cout << "Used Memory: " << ramUsed_ << std::endl;
-    std::cout << "Cache Memory: " << ramCache_ << std::endl;
-    std::cout << "Available Memory: " << ramAvailable_ << std::endl;
-    std::cout << "Number of RAM sticks: " << vendors_.size() << std::endl;
+    std::cout << "\tTotal Memory: " << ramTotal_ << std::endl;
+    std::cout << "\tUsed Memory: " << ramUsed_ << std::endl;
+    std::cout << "\tCache Memory: " << ramCache_ << std::endl;
+    std::cout << "\tAvailable Memory: " << ramAvailable_ << std::endl;
+    std::cout << "\tNumber of RAM sticks: " << vendors_.size() << std::endl;
 
     for (int i = 0; i < vendors_.size(); i++) {
-        std::cout << "Slot " << i+1 << ": "<< vendors_[i] << std::endl;
+        std::cout << "\tSlot " << i+1 << ": "<< vendors_[i] << std::endl;
         if (i < sizes_.size() && sizes_[i] != " None" && sizes_[i] != "No Module Installed") {
-            std::cout << "  Size:   " << sizes_[i] << std::endl;
+            std::cout << "\t\tSize:   " << sizes_[i] << std::endl;
         }
         if (i < models_.size() && models_[i] != " Not Specified" && models_[i] != "Unknown") {
-            std::cout << "  Model:  " << models_[i] << std::endl;
+            std::cout << "\t\tModel:  " << models_[i] << std::endl;
         }
         if (i < speeds_.size() && speeds_[i] != "Unknown") {
-            std::cout << "  Speed:  " << speeds_[i] << std::endl;
+            std::cout << "\t\tSpeed:  " << speeds_[i] << std::endl;
         }
     }
 }
