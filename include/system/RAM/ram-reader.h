@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-#include "component-reader.h"
+#include "../component-reader.h"
 
 class RamReader : public ComponentReader {
 public:

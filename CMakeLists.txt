@@ -17,9 +17,11 @@ add_executable(Know_Your_Computer
         src/system/GPU/intel-reader.cpp
         src/system/GPU/nvidia-reader.cpp
         src/system/GPU/amd-reader.cpp
+        src/system/RAM/ram-reader.cpp
         include/system/GPU/intel-reader.h
         include/system/GPU/nvidia-reader.h
         include/system/GPU/amd-reader.h
+        include/system/RAM/ram-reader.h
         include/system/Processes/process-reader.h
         src/system/Processes/process-reader.cpp
 )
@@ -27,9 +29,10 @@ add_executable(Know_Your_Computer
 target_include_directories(Know_Your_Computer PRIVATE
         ${CMAKE_SOURCE_DIR}/include/system/CPU
         ${CMAKE_SOURCE_DIR}/include/system/GPU
+        ${CMAKE_SOURCE_DIR}/include/system/RAM
         ${CMAKE_SOURCE_DIR}/include/system/Motherboard
         ${CMAKE_SOURCE_DIR}/include/system/Processes
-        ${CMAKE_SOURCE_DIR}/include/system/
+        ${CMAKE_SOURCE_DIR}/include/system
         ${CMAKE_SOURCE_DIR}/vendor/nvml
         ${CMAKE_SOURCE_DIR}/vendor/level-zero
 )
