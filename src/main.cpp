@@ -9,45 +9,88 @@
 
 int main()
 {
-    ProcReader proc;
-    MotherboardReader motherboard;
-    ProcessReader processes;
-    RamReader ram;
+    //INTERFACE
+    std::cout<<
+        "Welcome to linux system monitor app made by Olaf Karabin and Weronika Pucuła.\n"
+    <<std::endl;
 
-    //GPU
-    std::cout<<"GPU: "<<std::endl;
-    if (GpuReader* gpuReader = GpuFactory::createGpuReader()) {
-        gpuReader->readMaxTemp();
-        gpuReader->readCurrTemp();
+    while (true){
+        std::cout<<
+            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+            "Please specify what you wish to do:\n"
+            "\t1-Display hardware (model, temperature, memory)\n"
+            "\t2-Display running processes\n"
+        <<std::endl;
 
-        gpuReader->printModel();
-        gpuReader->printMaxTemp();
-        gpuReader->printCurrTemp();
+        char command;
+        std::cin>>command;
+        switch (command){
+            case '1':{
+                std::cout<<"Currently displaying hardware:"<<std::endl;
+
+                /*
+                 * Reading the computer's hardware.
+                 */
+
+                ProcReader proc;
+                proc.readModel();
+
+                MotherboardReader motherboard;
+                motherboard.readModel();
+
+                RamReader ram;
+                ram.readModel();
+
+                GpuReader* gpuReader = GpuFactory::createGpuReader();
+                if (gpuReader){
+                    gpuReader->readMaxTemp();
+                }
+                else {
+                    std::cerr<<"Err: Couldn't find GPU!"<<std::endl;
+                }
+
+                std::cout<<std::endl;
+
+                /*
+                 * Printing the read hardware.
+                 */
+
+                std::cout<<"CPU: "<<std::endl;
+                proc.printModel();
+
+                if (gpuReader){
+                    std::cout<<"GPU: "<<std::endl;
+                    gpuReader->readCurrTemp();
+                    gpuReader->printModel();
+                    gpuReader->printMaxTemp();
+                    gpuReader->printCurrTemp();
+                }
+
+                std::cout<<"RAM: "<<std::endl;
+                ram.printModel();
+
+                std::cout<<"MOTHERBOARD: "<<std::endl;
+                motherboard.printModel();
+
+                break;
+            }
+
+            case '2':{
+                std::cout<<"Displaying running processes:"<<std::endl;
+
+                ProcessReader processes;
+                processes.readProcesses();
+                processes.printProcesses();
+
+                break;
+            }
+
+            default:{
+                std::cerr<<"Unknown command. Try again."<<std::endl;
+                break;
+            }
+        }
     }
-    else {
-        std::cerr<<"Err: Couldn't find GPU!"<<std::endl;
-    }
-
-    //PROCESSOR
-    std::cout<<std::endl;
-    std::cout<<"CPU: "<<std::endl;
-    proc.readModel();
-    proc.printModel();
-
-    //RAM
-    std::cout<<"RAM: "<<std::endl;
-    ram.readModel();
-    ram.printModel();
-
-    //MOTHERBOARD
-    std::cout<<"MOTHERBOARD: "<<std::endl;
-    motherboard.readModel();
-    motherboard.printModel();
-
-    //PROCESSES:
-    std::cout<<"PROCESSES: "<<std::endl;
-    processes.readProcesses();
-    processes.printProcesses();
 
     return 0;
 }
