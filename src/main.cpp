@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ostream>
 
+#include "console.h"
 #include "proc-reader.h"
 #include "gpu-reader.h"
 #include "motherboard-reader.h"
@@ -26,6 +27,7 @@ int main()
         std::cin>>command;
         switch (command){
             case '1':{
+                Console::clearScreen();
                 std::cout<<"Currently displaying hardware:"<<std::endl;
 
                 /*
@@ -76,6 +78,7 @@ int main()
             }
 
             case '2':{
+                Console::clearScreen();
                 std::cout<<"Displaying running processes:"<<std::endl;
 
                 ProcessReader processes;
@@ -86,6 +89,7 @@ int main()
             }
 
             default:{
+                Console::clearScreen();
                 std::cerr<<"Unknown command. Try again."<<std::endl;
                 break;
             }

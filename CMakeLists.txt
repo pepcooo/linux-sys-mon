@@ -24,6 +24,8 @@ add_executable(Know_Your_Computer
         include/system/RAM/ram-reader.h
         include/system/Processes/process-reader.h
         src/system/Processes/process-reader.cpp
+        include/system/console.h
+        src/system/console.cpp
 )
 
 target_include_directories(Know_Your_Computer PRIVATE
