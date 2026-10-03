@@ -16,13 +16,15 @@ int main()
         "Welcome to linux system monitor app made by Olaf Karabin and Weronika Pucuła.\n"
     <<std::endl;
 
-    while (true){
+    bool running = true;
+    while (running){
         std::cout<<
             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
             "Please specify what you wish to do:\n"
             "\t1-Display hardware (model, temperature, memory)\n"
             "\t2-Display running processes\n"
-            "\t3-Enter process management mode.\n"
+            "\t3-Enter process management mode\n"
+            "\t4-Exit the system manager\n"
         <<std::endl;
 
         char command;
@@ -127,6 +129,12 @@ int main()
                         std::cout<<"\nSuccessfully changed the state of the process.\n"<<std::endl;
                     }
                 }
+                break;
+            }
+
+            case '4':{
+                running = false;
+                std::cout<<"Bye!"<<std::endl;
                 break;
             }
 
