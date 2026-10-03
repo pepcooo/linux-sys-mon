@@ -9,6 +9,7 @@ namespace fs = std::filesystem;
 
 
 void ProcessReader::printProcesses() const{
+    std::cout<<"\n\tNAME: PID, PPID, STATE, RAM_USED\n"<<std::endl;
     for (const auto& process : processes){
         std::cout<<"\t"<<process.name<<": "<<process.PID<<", "<<process.PPID<<", "<<getProcessName(process.state)<<", "
         <<process.ramUsed<<" MB"<<std::endl;
