@@ -6,6 +6,7 @@
 #include "gpu-reader.h"
 #include "motherboard-reader.h"
 #include "process-reader.h"
+#include "processes-manager.h"
 #include "ram-reader.h"
 
 int main()
@@ -21,6 +22,7 @@ int main()
             "Please specify what you wish to do:\n"
             "\t1-Display hardware (model, temperature, memory)\n"
             "\t2-Display running processes\n"
+            "\t3-Enter process management mode.\n"
         <<std::endl;
 
         char command;
@@ -80,11 +82,51 @@ int main()
             case '2':{
                 Console::clearScreen();
                 std::cout<<"Displaying running processes:"<<std::endl;
-
                 ProcessReader processes;
+
                 processes.readProcesses();
                 processes.printProcesses();
 
+                break;
+            }
+
+            case '3':{
+                while (true){
+                    Console::clearScreen();
+
+                    ProcessReader processes;
+
+                    processes.readProcesses();
+                    processes.printProcesses();
+
+                    std::cout<< "\nEntering process management mode:\n"
+                                "To modify a process' state, please enter the action character and the process PID.\n"
+                                "Currently supported actions are:\n"
+                                "\tE - send a SIGTERM signal (a polite termination request)\n"
+                                "\tK - send a SIGKILL signal (forceful shutdown)\n"
+                                "\tS - send a SIGSTOP signal (stop a process, putting it to sleep)\n"
+                                "\tC - send a SIGCONT signal (wake up a sleeping process)\n"
+                                "If you want to quit this mode, type \"Q\".\n"
+                    <<std::endl;
+
+                    char action;
+                    pid_t pid;
+
+                    std::cout<<"\nAction: ";
+                    std::cin>>action;
+                    if (action == 'Q' || action == 'q'){
+                        Console::clearScreen();
+                        break;
+                    }
+                    std::cout<<"Process ID (PID): ";
+                    std::cin>>pid;
+                    if (!ProcessesManager::changeState(action, pid)){
+                        std::cerr<<"\nFailed to change the state of the process.\n"<<std::endl;
+                    }
+                    else{
+                        std::cout<<"\nSuccessfully changed the state of the process.\n"<<std::endl;
+                    }
+                }
                 break;
             }
 

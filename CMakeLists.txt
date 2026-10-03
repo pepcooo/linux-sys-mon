@@ -26,6 +26,7 @@ add_executable(Know_Your_Computer
         src/system/Processes/process-reader.cpp
         include/system/console.h
         src/system/console.cpp
+        src/system/Processes/processes-manager.cpp
 )
 
 target_include_directories(Know_Your_Computer PRIVATE
