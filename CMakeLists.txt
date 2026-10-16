@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 4.3)
-project(Know_Your_Computer)
+cmake_minimum_required(VERSION 3.3)
+project(linux-sys-mon)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Know_Your_Computer
+add_executable(linux-sys-mon
         src/main.cpp
         include/system/component-reader.h
         include/system/CPU/proc-reader.h
@@ -29,7 +29,7 @@ add_executable(Know_Your_Computer
         src/system/Processes/processes-manager.cpp
 )
 
-target_include_directories(Know_Your_Computer PRIVATE
+target_include_directories(linux-sys-mon PRIVATE
         ${CMAKE_SOURCE_DIR}/include/system/CPU
         ${CMAKE_SOURCE_DIR}/include/system/GPU
         ${CMAKE_SOURCE_DIR}/include/system/RAM
@@ -40,4 +40,4 @@ target_include_directories(Know_Your_Computer PRIVATE
         ${CMAKE_SOURCE_DIR}/vendor/level-zero
 )
 
-target_link_libraries(Know_Your_Computer PRIVATE ${CMAKE_DL_LIBS})
+target_link_libraries(linux-sys-mon PRIVATE ${CMAKE_DL_LIBS})
